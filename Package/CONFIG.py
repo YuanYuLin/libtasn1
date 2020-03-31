@@ -42,10 +42,12 @@ def MAIN_EXTRACT(args):
     set_global(args)
 
     ops.mkdir(dst_lib_dir)
-    ops.copyto(ops.path_join(src_usr_lib_dir, "libtasn1.so.6.5.3"), dst_lib_dir)
-    ops.ln(dst_lib_dir, "libtasn1.so.6.5.3", "libtasn1.so.6.5")
-    ops.ln(dst_lib_dir, "libtasn1.so.6.5.3", "libtasn1.so.6")
-    ops.ln(dst_lib_dir, "libtasn1.so.6.5.3", "libtasn1.so")
+
+    lib_so = "libtasn1.so.6.3.2"
+    ops.copyto(ops.path_join(src_usr_lib_dir, lib_so), dst_lib_dir)
+    ops.ln(dst_lib_dir, lib_so, "libtasn1.so.6.3")
+    ops.ln(dst_lib_dir, lib_so, "libtasn1.so.6")
+    ops.ln(dst_lib_dir, lib_so, "libtasn1.so")
     return True
 
 def MAIN_PATCH(args, patch_group_name):
